@@ -44,18 +44,15 @@ const RichTextEditor = () => {
   };
 
   return (
-    <div className="flex items-center justify-center mt-10">
+    <div className="flex items-center justify-center h-dvh">
       <div className="bg-[#0E101F] text-[#A89FB9] p-4 rounded border shadow-xl">
-        <h2 className="text-3xl font-bold text-center mb-2">
-          Dev Rahaman Text Editor
-        </h2>
+        <h2 className="text-3xl font-bold text-center mb-2">EditorHub</h2>
         <div
           className="relative w-full h-[350px] p-2 border shadow rounded resize-none"
           contentEditable={true}
           ref={editorRef}
         />
         <div className="mt-2">
-          <MyButton funName={handleBold} icon={<FaBold />} />
           <MyButton
             funName={() =>
               handleFun({ first: "bold", second: false, last: "" })

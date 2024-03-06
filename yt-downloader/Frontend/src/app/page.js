@@ -12,13 +12,16 @@ const YTDownloader = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/getVideoInfo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ videoURL }),
-      });
+      const response = await fetch(
+        "https://yt-downloader-server-beta.vercel.app/getVideoInfo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ videoURL }),
+        }
+      );
       const data = await response.json();
       setVideoInfo(data);
     } catch (error) {
@@ -28,13 +31,16 @@ const YTDownloader = () => {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch("http://localhost:5000/downloadVideo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ videoURL }),
-      });
+      const response = await fetch(
+        "https://yt-downloader-server-beta.vercel.app/downloadVideo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ videoURL }),
+        }
+      );
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);

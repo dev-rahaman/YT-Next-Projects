@@ -8,6 +8,32 @@ app.use(cors());
 
 // getting video info
 
+// app.post("/getVideoInfo", async (req, res) => {
+//   try {
+//     const videoURL = req.body.videoURL;
+//     const info = await ytdl.getInfo(videoURL);
+//     const videoInfo = {
+//       title: info.videoDetails.title,
+//       thumbnail: info.videoDetails.thumbnail.thumbnails[0].url,
+//     };
+//     res.json(videoInfo);
+//   } catch (error) {
+//     console.error("Error getting video info", error.message);
+//   }
+// });
+
+// // download video
+// app.post("/downloadVideo", (req, res) => {
+//   try {
+//     const videoURL = req.body.videoURL;
+//     res.header("Content-Disposition", "attachment; filename='mp4'");
+//     ytdl(videoURL, { format: "mp4" }).pipe(res);
+//   } catch (error) {
+//     console.error("ERROR Downloading Video", error.message);
+//   }
+// });
+
+// getting video info
 app.post("/getVideoInfo", async (req, res) => {
   try {
     const videoURL = req.body.videoURL;
@@ -16,6 +42,7 @@ app.post("/getVideoInfo", async (req, res) => {
       title: info.videoDetails.title,
       thumbnail: info.videoDetails.thumbnail.thumbnails[0].url,
     };
+    res.header("Access-Control-Allow-Origin", "https://downloader-ytv.web.app");
     res.json(videoInfo);
   } catch (error) {
     console.error("Error getting video info", error.message);
@@ -26,6 +53,7 @@ app.post("/getVideoInfo", async (req, res) => {
 app.post("/downloadVideo", (req, res) => {
   try {
     const videoURL = req.body.videoURL;
+    res.header("Access-Control-Allow-Origin", "https://downloader-ytv.web.app");
     res.header("Content-Disposition", "attachment; filename='mp4'");
     ytdl(videoURL, { format: "mp4" }).pipe(res);
   } catch (error) {
