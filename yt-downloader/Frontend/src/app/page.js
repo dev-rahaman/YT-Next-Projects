@@ -53,27 +53,32 @@ const YTDownloader = () => {
   };
 
   return (
-    <div className="h-[500px] flex items-center justify-center flex-col border-8 p-3 border-purple-500 w-[500px] ">
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            value={videoURL}
-            onChange={handleChange}
-            type="text"
-            className="border p-2"
-          />
-          <button className="p-2 bg-gray-400">get info</button>
-        </form>
-      </div>
-      {videoInfo && (
-        <div className="my-5 flex items-center justify-center flex-col">
-          <h2 className="text-4xl font-bold text-center">{videoInfo.title}</h2>
-          <img src={videoInfo.thumbnail} className="w-[300px]" />
-          <button onClick={handleDownload} className="p-2 bg-gray-400 mt-4">
-            Download
-          </button>
+    <div className="flex items-center justify-center h-dvh">
+      <div className="lg:h-[500px] h-[300px] flex items-center justify-center flex-col border-8 p-3 border-purple-500 lg:w-[600px] ">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              value={videoURL}
+              onChange={handleChange}
+              type="text"
+              className="border lg:w-[400px] outline-none p-2 focus:border-purple-500"
+              placeholder="Past a Youtube Video Link"
+            />
+            <button className="p-2 bg-gray-400">Get info</button>
+          </form>
         </div>
-      )}
+        {videoInfo && (
+          <div className="my-5 flex items-center justify-center flex-col">
+            <h2 className="text-4xl font-bold text-center">
+              {videoInfo.title}
+            </h2>
+            <img src={videoInfo.thumbnail} className="w-[300px]" />
+            <button onClick={handleDownload} className="p-2 bg-gray-400 mt-4">
+              Download
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
